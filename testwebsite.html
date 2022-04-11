@@ -1,0 +1,88 @@
+<!-- This file is to test importing the JSON file to a website -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Styling-->
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background-color: rgb(26, 26, 26);
+            color: white;
+        }
+
+        table,
+        th,
+        td,
+        tr {
+            border: 1px solid;
+            border-collapse: collapse;
+            padding: 1px 5px;
+
+
+        }
+        th {
+            background-color: rgb(73, 2, 46);
+
+        }
+
+
+        #dumper {
+            border: 22px
+        }
+
+        .credTable {
+            border: 5px solid
+        }
+    </style>
+    <title>Leaked L00t</title>
+</head>
+
+
+
+<body>
+    <!-- Body -->
+
+    <h1>List of leaked credentials</h1>
+
+
+    <script>
+
+        fetch("generatedCREDS.json")
+            .then(response => response.json())
+            .then(data => {
+
+                let fullText = "<table class='credTable'><tr> <th>Name</th> <th>Surname</th> <th>Email</th> <th>Password</th>"
+
+                for (let x in data) {
+                    fullText += "<tr>" +
+                        "<td>" + data[x].name + "</td>" +
+                        "<td>" + data[x].surname + "</td>" +
+                        "<td>" + data[x].email + "</td>" +
+                        "<td>" + data[x].password + "</td>" +
+                        "</tr>";
+                }
+                fullText += "</table>"
+
+                document.querySelector("#dumper").innerHTML = fullText;
+
+
+
+
+            })
+
+    </script>
+
+    <div id="dumper">No credentials were found</div>
+
+    <h5>--End Cred Dumps--</h5>
+</body>
+
+</html>
